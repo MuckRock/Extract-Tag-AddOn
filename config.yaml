@@ -1,7 +1,7 @@
 # The title is the title of your Add-On
-title: Hello World
+title: Extract Between Add-On
 # The description will be shown above the form when activating the Add-On
-description: This is an updated simple test add-on
+description: When provided a selection or query of DocumentCloud documents, this Add-On extracts the text from a document starting from a given start string to a given end string (inclusive), basically automating a copy-paste procedure.
 # Top level type should always be object
 type: object
 # How does this add-on accept documents
@@ -14,8 +14,14 @@ documents:
 # Properties are the fields for your form
 properties:
   # the key is the name of the variable that will be returned to your code
-  name:
+  start:
     # the title is what will be shown as the form label
-    title: Name
+    title: Start String
     # a string is text
     type: string
+  end:
+    title: End String
+    type: string
+required: 
+  - start
+  - end
