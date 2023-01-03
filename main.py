@@ -15,11 +15,9 @@ class ExtractBetween(AddOn):
         end = self.data.get('end')
         for document in self.get_documents():
             text_to_parse = document.full_text
+            text_to_parse.replace("\n", " ")
             start_char = text_to_parse.find(start)
             end_char = text_to_parse.find(end)
-            print(start_char)
-            print(end_char)
-            """
             extracted_text = text_to_parse[start_char:end_char]
             with open(f"{document.title}.txt",  'w') as file:
                 file.write(extracted_text)
@@ -27,6 +25,6 @@ class ExtractBetween(AddOn):
         subprocess.call("zip -q -r extract.zip out", shell=True)
         self.upload_file(open("extract.zip"))
         self.set_message("Add-On run complete.")
-        shutil.rmtree("./out", ignore_errors=False, onerror=None)"""
+        shutil.rmtree("./out", ignore_errors=False, onerror=None)
 if __name__ == "__main__":
     ExtractBetween().main()
