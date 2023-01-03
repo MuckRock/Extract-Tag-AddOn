@@ -15,7 +15,9 @@ class ExtractBetween(AddOn):
         end = self.data.get('end')
         for document in self.get_documents():
             text_to_parse = document.full_text
-            extracted_text = re.search('%s(.*)%s' % (start, end), text_to_parse).group(1)
+            start_char = text_to_parse.find(start)
+            end_char = text_to_parse.find(end)
+            extracted_text = text_to_parse.split(start,end)
             with open(f"{document.title}.txt",  'w') as file:
                 file.write(extracted_text)
         os.chdir('..')
