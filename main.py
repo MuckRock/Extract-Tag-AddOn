@@ -1,4 +1,5 @@
 import os
+import re
 import shutil
 import subprocess
 from documentcloud.addon import AddOn
@@ -10,12 +11,11 @@ class ExtractBetween(AddOn):
         os.makedirs(os.path.dirname("./out/"), exist_ok=True)
         os.chdir('out')
         self.set_message("Extracting text from documents...")
-        start_string = self.data.get('start')
-        end_string = self.data.get('end')
+        start = self.data.get('start')
+        end = self.data.get('end')
         for document in self.get_documents():
             text_to_parse = document.full_text
-            extracted_text = text_to_parse.partition(start_string)[2].partition(end_string)[0]
-            print(extracted_text)
+            extracted_text = re.search('%s(.*)%s' % (start, end), text_to_parse).group(1)
             with open(f"{document.title}.txt",  'w') as file:
                 file.write(extracted_text)
         os.chdir('..')
