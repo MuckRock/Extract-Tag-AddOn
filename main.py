@@ -15,7 +15,7 @@ class ExtractBetween(AddOn):
         end = self.data.get('end')
         for document in self.get_documents():
             text_to_parse = document.full_text
-            text_to_parse.replace("\n", " ")
+            text_to_parse = text_to_parse.replace("\n", " ")
             start_char = text_to_parse.find(start)
             end_char = text_to_parse.find(end)
             extracted_text = text_to_parse[start_char:end_char]
