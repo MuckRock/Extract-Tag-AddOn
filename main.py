@@ -19,6 +19,7 @@ class ExtractBetween(AddOn):
                 file.write(extracted_text)
         os.chdir('..')
         subprocess.call("zip -q -r extract.zip out", shell=True)
+        self.upload_file(open("extract.zip"))
         self.set_message("Add-On run complete.")
         shutil.rmtree("./out", ignore_errors=False, onerror=None)
 
