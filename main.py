@@ -17,7 +17,7 @@ class ExtractBetween(AddOn):
             text_to_parse = document.full_text
             start_char = text_to_parse.find(start)
             end_char = text_to_parse.find(end)
-            extracted_text = text_to_parse.slice(start_char,end_char)
+            extracted_text = text_to_parse[start_char:end_char]
             with open(f"{document.title}.txt",  'w') as file:
                 file.write(extracted_text)
         os.chdir('..')
