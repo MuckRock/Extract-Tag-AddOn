@@ -18,8 +18,9 @@ class ExtractBetween(AddOn):
             start_char = text_to_parse.find(start) + len(start)
             end_char = text_to_parse.find(end)
             extracted_text = text_to_parse[start_char:end_char]
-            with open(f"{document.title}.txt",  'w') as file:
-                file.write(extracted_text)
+            if self.data.get("file_download"):
+                with open(f"{document.title}.txt",  'w') as file:
+                    file.write(extracted_text)
             if "key_name" in self.data:
                 name_key = self.data.get("key_name")
                 document.data[name_key] = extracted_text
