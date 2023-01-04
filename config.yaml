@@ -31,3 +31,4 @@ properties:
 required: 
   - start
   - end
+  - file_download
