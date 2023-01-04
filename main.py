@@ -21,8 +21,17 @@ class ExtractBetween(AddOn):
             with open(f"{document.title}.txt",  'w') as file:
                 file.write(extracted_text)
             if "key_name" in self.data:
-                key = self.data.get("key_name")
-                document.data["key"] = extracted_text
+                name_key = self.data.get("key_name")
+                try: 
+                    response = self.client.put(
+                        "documents/",
+                        json=[
+                            {"id": document.id, data[name_key] = extracted_text}  if document is not None
+                        ],
+                    )
+                except APIError as exc:
+                    self.set_message(f"Error: {exc.error}")
+                    raise
         os.chdir('..')
         subprocess.call("zip -q -r extract.zip out", shell=True)
         self.upload_file(open("extract.zip"))
