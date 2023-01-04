@@ -26,7 +26,7 @@ properties:
     title: Key Name
     type: string
   file_download:
-    title: Would you like a file download be provided with all of the extracted text? 
+    title: Would you like to download the extracted text? 
     type: boolean
 required: 
   - start
