@@ -1,5 +1,4 @@
 import os
-import re
 import shutil
 import subprocess
 from documentcloud.addon import AddOn
@@ -21,6 +20,9 @@ class ExtractBetween(AddOn):
             extracted_text = text_to_parse[start_char:end_char]
             with open(f"{document.title}.txt",  'w') as file:
                 file.write(extracted_text)
+            if "key_name" in self.data:
+                key = self.data.get("key_name")
+                document.data["key"] = extracted_text
         os.chdir('..')
         subprocess.call("zip -q -r extract.zip out", shell=True)
         self.upload_file(open("extract.zip"))
