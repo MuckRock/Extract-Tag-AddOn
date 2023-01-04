@@ -25,9 +25,7 @@ class ExtractBetween(AddOn):
                 try: 
                     response = self.client.put(
                         "documents/",
-                        json=[
-                            {"id": document.id, data[name_key] : extracted_text}  if document is not None
-                        ],
+                        json=[{"id": document.id, data[name_key] : extracted_text}],
                     )
                 except APIError as exc:
                     self.set_message(f"Error: {exc.error}")
