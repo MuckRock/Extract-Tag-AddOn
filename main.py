@@ -21,13 +21,13 @@ class ExtractBetween(AddOn):
             if self.data.get("file_download"):
                 with open(f"{document.title}.txt",  'w') as file:
                     file.write(extracted_text)
+                os.chdir('..')
+                subprocess.call("zip -q -r extract.zip out", shell=True)
+                self.upload_file(open("extract.zip"))
             if "key_name" in self.data:
                 name_key = self.data.get("key_name")
                 document.data[name_key] = extracted_text
                 document.put()
-        os.chdir('..')
-        subprocess.call("zip -q -r extract.zip out", shell=True)
-        self.upload_file(open("extract.zip"))
         self.set_message("Add-On run complete.")
         shutil.rmtree("./out", ignore_errors=False, onerror=None)
 if __name__ == "__main__":
