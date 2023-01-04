@@ -27,7 +27,7 @@ class ExtractBetween(AddOn):
                         "documents/",
                         json=[{"id": document.id, data[name_key] : extracted_text}],
                     )
-                except APIError as exc:
+                except Exception as exc:
                     self.set_message(f"Error: {exc.error}")
                     raise
         os.chdir('..')
