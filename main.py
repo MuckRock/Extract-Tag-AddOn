@@ -1,5 +1,4 @@
 import os
-import shutil
 import subprocess
 from documentcloud.addon import AddOn
 
@@ -29,6 +28,5 @@ class ExtractBetween(AddOn):
                 document.data[name_key] = extracted_text
                 document.put()
         self.set_message("Add-On run complete.")
-        shutil.rmtree("./out", ignore_errors=False, onerror=None)
 if __name__ == "__main__":
     ExtractBetween().main()
