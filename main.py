@@ -28,7 +28,6 @@ class ExtractBetween(AddOn):
                         json=[{"id": document.id, data[name_key] : extracted_text}],
                     )
                 except Exception as exc:
-                    self.set_message(f"Error: {exc.error}")
                     raise
         os.chdir('..')
         subprocess.call("zip -q -r extract.zip out", shell=True)
