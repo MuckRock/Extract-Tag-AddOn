@@ -32,7 +32,7 @@ class ExtractBetween(AddOn):
                     document.put()
                 except requests.exceptions.RequestException as e:
                     pass
-                except documentcloud.exceptions.APIError as ed:
+                except DocumentCloud.exceptions.APIError as ed:
                     pass
         self.set_message("Add-On run complete.")
 if __name__ == "__main__":
