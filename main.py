@@ -28,7 +28,7 @@ class ExtractBetween(AddOn):
                 try:
                     document.data[name_key] = extracted_text
                     document.put()
-                except: 
+                except requests.exceptions.RequestException as e:
                     pass
         self.set_message("Add-On run complete.")
 if __name__ == "__main__":
