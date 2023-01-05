@@ -1,4 +1,5 @@
 import os
+import requests
 import subprocess
 from documentcloud.addon import AddOn
 
