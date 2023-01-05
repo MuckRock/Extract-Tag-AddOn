@@ -2,6 +2,7 @@ import os
 import requests
 import subprocess
 from documentcloud.addon import AddOn
+from documentcloud import DocumentCloud
 
 class ExtractBetween(AddOn):
     """Add-On that extracts text between a start and end string"""
@@ -30,6 +31,8 @@ class ExtractBetween(AddOn):
                     document.data[name_key] = extracted_text
                     document.put()
                 except requests.exceptions.RequestException as e:
+                    pass
+                except documentcloud.exceptions.APIError as ed:
                     pass
         self.set_message("Add-On run complete.")
 if __name__ == "__main__":
