@@ -25,8 +25,11 @@ class ExtractBetween(AddOn):
                 self.upload_file(open("extract.zip"))
             if "key_name" in self.data:
                 name_key = self.data.get("key_name")
-                document.data[name_key] = extracted_text
-                document.put()
+                try:
+                    document.data[name_key] = extracted_text
+                    document.put()
+                except: 
+                    pass
         self.set_message("Add-On run complete.")
 if __name__ == "__main__":
     ExtractBetween().main()
