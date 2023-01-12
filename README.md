@@ -5,4 +5,4 @@
 
 # DocumentCloud Extract Between Add-On
 
-When provided a selection or query of DocumentCloud documents, it extracts the text from a document from a given start string to a given end string (inclusive), basically automating a select and copy-paste procedure. 
+When provided a selection or query of DocumentCloud documents, it extracts the text from each document from a given start string to a given end string and creates a tag on that document with the extracted text. Great for pulling filing, edited, etc dates to create metadata. 
