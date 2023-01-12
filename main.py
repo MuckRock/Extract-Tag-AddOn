@@ -4,9 +4,8 @@ import subprocess
 from documentcloud.addon import AddOn
 from documentcloud.exceptions import APIError
 
-class ExtractBetween(AddOn):
+class ExtractThenTag(AddOn):
     """Add-On that extracts text between a start and end string"""
-
     def main(self):
         os.makedirs(os.path.dirname("./out/"), exist_ok=True)
         os.chdir('out')
@@ -19,21 +18,14 @@ class ExtractBetween(AddOn):
             start_char = text_to_parse.find(start) + len(start)
             end_char = text_to_parse.find(end)
             extracted_text = text_to_parse[start_char:end_char]
-            if self.data.get("file_download"):
-                with open(f"{document.title}.txt",  'w') as file:
-                    file.write(extracted_text)
-                os.chdir('..')
-                subprocess.call("zip -q -r extract.zip out", shell=True)
-                self.upload_file(open("extract.zip"))
-            if "key_name" in self.data:
-                name_key = self.data.get("key_name")
-                try:
-                    document.data[name_key] = extracted_text
-                    document.put()
-                except requests.exceptions.RequestException as e:
-                    pass
-                except APIError as ed:
-                    pass
+            name_key = self.data.get("key_name")
+            try:
+                document.data[name_key] = extracted_text
+                document.put()
+            except requests.exceptions.RequestException as e:
+                pass
+            except APIError as ed:
+                pass
         self.set_message("Add-On run complete.")
 if __name__ == "__main__":
-    ExtractBetween().main()
+    ExtractThenTag().main()
