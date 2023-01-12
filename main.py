@@ -1,10 +1,9 @@
 import os
-import requests
-import subprocess
 from documentcloud.addon import AddOn
 from documentcloud.exceptions import APIError
+from requests.exceptions import RequestException
 
-class ExtractThenTag(AddOn):
+class ExtractAndTag(AddOn):
     """Add-On that extracts text between a start and end string"""
     def main(self):
         os.makedirs(os.path.dirname("./out/"), exist_ok=True)
@@ -22,10 +21,9 @@ class ExtractThenTag(AddOn):
             try:
                 document.data[name_key] = extracted_text
                 document.put()
-            except requests.exceptions.RequestException as e:
-                pass
-            except APIError as ed:
-                pass
+            except (APIError, RequestException) as exc:
+                print("Tagging Error on Document", str(exc))
+                print(document.title)
         self.set_message("Add-On run complete.")
 if __name__ == "__main__":
-    ExtractThenTag().main()
+    ExtractAndTag().main()
