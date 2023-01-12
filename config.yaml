@@ -25,10 +25,7 @@ properties:
   key_name:
     title: Key Name
     type: string
-  file_download:
-    title: Would you like the option to download the extracted text locally?
-    type: boolean
 required: 
   - start
   - end
-  - file_download
+  - key_name
