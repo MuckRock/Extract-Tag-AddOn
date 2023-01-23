@@ -1,8 +1,9 @@
 from documentcloud.addon import AddOn
 from documentcloud.exceptions import APIError
 from requests.exceptions import RequestException
+from documentcloud.addon import SoftTimeOutAddOn
 
-class ExtractAndTag(AddOn):
+class ExtractAndTag(SoftTimeOutAddOn):
     """Add-On that extracts text between a start and end string"""
     def main(self):
         self.set_message("Extracting text from documents...")
