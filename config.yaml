@@ -29,4 +29,6 @@ required:
   - start
   - end
   - key_name
+categories:
+  - extraction
 version: 2
