@@ -7,9 +7,9 @@ class ExtractAndTag(SoftTimeOutAddOn):
     """Add-On that extracts text between a start and end string"""
     def main(self):
         self.set_message("Extracting text from documents...")
-        start = self.data.get('start')
-        end = self.data.get('end')
-        name_key = self.data.get("key_name")
+        start = self.data.get('start').strip()
+        end = self.data.get('end').strip()
+        name_key = self.data.get("key_name").strip()
         for document in self.get_documents():
             text_to_parse = document.full_text
             text_to_parse = text_to_parse.replace("\n", " ")
