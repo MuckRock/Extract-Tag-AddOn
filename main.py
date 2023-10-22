@@ -6,9 +6,6 @@ from documentcloud.addon import SoftTimeOutAddOn
 class ExtractAndTag(SoftTimeOutAddOn):
     """Add-On that extracts text between a start and end string"""
     def main(self):
-        if not self.documents:
-            self.set_message("Please select at least one document.")
-            return
         self.set_message("Extracting text from documents...")
         start = self.data.get('start').strip()
         end = self.data.get('end').strip()
