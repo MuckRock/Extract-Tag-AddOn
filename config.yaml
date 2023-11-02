@@ -1,23 +1,13 @@
-# The title is the title of your Add-On
 title: Extract & Tag Add-On
-# The description will be shown above the form when activating the Add-On
 description: When provided a selection or query of DocumentCloud documents, this Add-On extracts the text from a document starting from a given start string to a given end string, basically automating a copy-paste procedure. It also allows you to pick a key name for it if you want to add it as a key/value pair on DocumentCloud. 
-# Top level type should always be object
+instructions: ''
 type: object
-# How does this add-on accept documents
-# If more than one type is specified, the user will be prompted to choose one
 documents:
-  # By the current search query
   - query
-  # By the currently selected documents
   - selected
-# Properties are the fields for your form
 properties:
-  # the key is the name of the variable that will be returned to your code
   start:
-    # the title is what will be shown as the form label
     title: Start String
-    # a string is text
     type: string
   end:
     title: End String
