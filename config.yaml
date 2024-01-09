@@ -1,6 +1,6 @@
 title: Extract & Tag Add-On
 description: When provided a selection or query of DocumentCloud documents, this Add-On extracts the text from a document starting from a given start string to a given end string, basically automating a copy-paste procedure. It also allows you to pick a key name for it if you want to add it as a key/value pair on DocumentCloud. 
-instructions: ''
+instructions: '[testing](https://documentcloud.org)'
 type: object
 documents:
   - query
