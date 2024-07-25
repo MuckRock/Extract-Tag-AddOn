@@ -3,8 +3,8 @@ description: When provided a selection or query of DocumentCloud documents, this
 instructions: ''
 type: object
 documents:
-  - query
   - selected
+  - query
 properties:
   start:
     title: Start String
